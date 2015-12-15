@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'CSV'
+require_relative 'calculator'
 
 csv = ARGV.first
 requested_amount = ARGV.last
 
-CSV.foreach(csv) do |row|
-  p row
-end
+Calculator.new(csv,requested_amount)

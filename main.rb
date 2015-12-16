@@ -6,11 +6,11 @@ csv = ARGV.first
 requested_amount = ARGV.last
 
 result = Calculator.new(csv,requested_amount)
+lender = result.lowest_lender || false
 
-if result.correct_amount?
+if result.correct_amount? && lender
+  p "Lender: #{lender.name.capitalize}"
   p "Requested amount: £#{result.amount}"
 else
-  p "Please enter an amount between 1000 and 15000 and in increments of 100"
+  p "Sorry we could not process your application."
 end
-
-p result.lowest_lender

@@ -1,4 +1,5 @@
 require_relative '../calculator'
+require_relative '../lender'
 
 require 'yaml'
 

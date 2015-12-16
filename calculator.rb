@@ -1,4 +1,5 @@
 require 'CSV'
+require_relative('lender')
 
 class Calculator
 
@@ -14,10 +15,9 @@ class Calculator
     amount_pass ? true : false
   end
 
-
-    # CSV.foreach(csv) do |row|
-  #   p row
-  # end
+  def lowest_lender
+    Lender.lenders(csv)
+  end
 
 
 

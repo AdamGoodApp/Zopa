@@ -12,3 +12,5 @@ if result.correct_amount?
 else
   p "Please enter an amount between 1000 and 15000 and in increments of 100"
 end
+
+p result.lowest_lender

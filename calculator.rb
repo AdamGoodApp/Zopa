@@ -16,7 +16,7 @@ class Calculator
   end
 
   def lowest_lender
-    Lender.lenders(csv,amount).min_by(&:rate)
+    Lender.lenders(csv).min_by(&:rate)
   end
 
 

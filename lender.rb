@@ -8,10 +8,10 @@ class Lender
     @amount = amount.to_i
   end
 
-  def self.lenders(csv,requested_amount)
+  def self.lenders(csv)
     lenders = []
     CSV.foreach(csv, headers: true) do |obj|
-      lenders << self.new(obj['Lender'], obj['Rate'], obj['Available']) if obj['Available'].to_f >= requested_amount
+      lenders << self.new(obj['Lender'], obj['Rate'], obj['Available'])
     end
     lenders
   end

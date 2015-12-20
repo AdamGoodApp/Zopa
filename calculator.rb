@@ -15,10 +15,34 @@ class Calculator
     amount_pass ? true : false
   end
 
-  def lowest_lender
-    Lender.lenders(csv).min_by(&:rate)
+  def lenders
+    Lender.lenders(csv).combination(2).select { |a, b,| a.available + b.available == self.amount }.first
   end
 
+  def compounded_interest(available, rate)
+    p = available
+    r = rate
+    t = 3
+    n = 36
+    p * (1 + r/n) ** (n*t)
+  end
 
+  def total_repayment
+    if lenders
+      total = 0
+      lenders.each {|l| total += compounded_interest(l.available, l.rate)}
+      total
+    else
+      false
+    end
+  end
+
+  def total_monthly_repayment
+    total_repayment / 36 if total_repayment
+  end
+
+  def average_rate
+    lenders.inject{ |sum, el| sum.rate + el.rate }.to_f / lenders.size * 100
+  end
 
 end
